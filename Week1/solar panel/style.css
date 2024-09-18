@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+header {
+  background: #0B9586;
+}
+header .container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  font-size: 20px;
+
+  .active {
+    color: #fff;
+    background-color: #0c8375;
+    padding: 10px ;
+    border-radius: 10px;
+    box-shadow: 3px 4px 4px rgb(63, 40, 40);  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 60%;
+
+    img {
+      width: 8%px;
+      filter: invert(40%);
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+
+      li {
+        margin-right: 20px;
+
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+      }
+    }
+  }
+
+  .call {
+    color: #fff;
+    align-items: center;
+    p:first-child {
+      text-align: end;
+    }
+  }
+}
+
+/* Home section */
+main {
+  background-image: url('/img/solar-panels-meadow\ 1.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
+
+
+
+
+
+
+/* Default styles for all devices */
+.container {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto;
+  /* background: #000; */
+}
+
+/* For large devices (desktops) */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px; 
+  }
+}
+
+/* For medium devices (tablets) */
+@media (max-width: 992px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+/* For small devices (large smartphones) */
+@media (max-width: 768px) {
+  .container {
+    max-width: 500px;
+  }
+}
+
+/* For extra small devices (small smartphones) */
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+    padding: 0 20px; 
+  }
+}
