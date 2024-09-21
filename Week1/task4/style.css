@@ -12,38 +12,74 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
 }
+
+
+/* General styles for the header */
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
   background-color: var(--primary-color);
   color: white;
-  padding: 40px 0;
-  text-align: center;
-  position: relative;
 }
-.header::after {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 5px;
-  background-color: white;
+
+.header h1 {
+  margin: 0;
 }
-.nav-links {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+
 .nav-links a {
   color: white;
-  margin: 0 15px;
   text-decoration: none;
-  font-weight: bold;
+  margin-right: 15px;
+  font-size: 22px;
 }
+
 .nav-links a:hover {
   text-decoration: underline;
 }
 
+.menu-icon {
+  display: none;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #3498db;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 15px 0;
+    margin: 0;
+    border-top: 1px solid #fff;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+
+/* Main content styles */
 article {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -54,6 +90,8 @@ article:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+
+/* Sidebar styles */
 .sidebar {
   background-color: #f8f9fa;
   padding: 20px;
@@ -79,17 +117,9 @@ article:hover {
 .sidebar ul li a:hover {
   text-decoration: underline;
 }
-.footer {
-  background-color: #343a40;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-}
-.footer p {
-  margin: 0;
-}
 
+
+/* Scroll Up Button */
 .scrollUpBtn {
   position: fixed;
   bottom: 20px;
@@ -107,3 +137,17 @@ article:hover {
 .scrollUpBtn:hover {
   background-color: #2980b9;
 }
+
+
+/* Footer styles */
+.footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+.footer p {
+  margin: 0;
+}
+
