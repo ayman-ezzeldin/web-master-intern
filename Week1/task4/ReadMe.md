@@ -66,7 +66,6 @@ my-advanced-blog/
 ├── style.css          # Custom styles for the project
 ├── script.js          # JavaScript for menu toggle and scroll-to-top functionality
 ├── README.md          # Project documentation
-└── assets/            # Optional folder for images, fonts, etc.
 ```
 
 ## Customization
