@@ -12,7 +12,6 @@ Welcome to **My Advanced Blog**, a responsive and feature-rich blog designed usi
 - [Folder Structure](#folder-structure)
 - [Customization](#customization)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
