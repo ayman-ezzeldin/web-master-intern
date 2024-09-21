@@ -39,13 +39,8 @@ To run this project locally, follow these steps:
    ```bash
    git clone https://github.com/your-username/my-advanced-blog.git
    ```
-   
-2. **Navigate to the project directory**:
-   ```bash
-   cd my-advanced-blog
-   ```
 
-3. **Open the `index.html` file** in your browser:
+2. **Open the `index.html` file** in your browser:
    ```bash
    open index.html
    ```
@@ -93,6 +88,3 @@ Contributions are welcome! If you'd like to improve this project or add new feat
 4. Push to the branch (`git push origin feature/YourFeature`).
 5. Create a pull request.
 
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
