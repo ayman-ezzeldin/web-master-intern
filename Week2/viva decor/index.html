@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viva Decor</title>
-  <link rel="shortcut icon" href="./img/Image.png" type="image/x-icon">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            clifford: '#da373d',
-          }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viva Decor</title>
+    <link rel="shortcut icon" href="./img/Image.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
         }
-      }
-    }
-  </script>
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .content-auto {
-        content-visibility: auto;
-      }
-      .title-with-dash::before {
-          content: '';
+
+        .title-with-dash::before {
+          content: "";
           position: absolute;
           width: 3rem;
           height: 3px;
@@ -32,156 +33,432 @@
           left: -60px;
           top: 50%;
           transform: translate(0, 50%);
+        }
+
+        .collapse-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.5s ease-in-out;
+        }
+
+        .collapse-content.active {
+          max-height: 1000px; /* Adjust based on content size */
+        }
       }
-    }
-  </style>
-</head>
-<body class="font-sans antialiased">
-
-  <!-- Header Section -->
-  <header class="bg-white shadow-md">
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
       <div class="container mx-auto flex justify-between items-center p-4">
-          <!-- Logo -->
-          <div class="flex items-center">
-              <img src="./img/logo.png" alt="Viva Decor Logo" class="h-10 w-auto mr-2">
-          </div>
+        <!-- Logo -->
+        <div class="flex items-center">
+          <img
+            src="./img/logo.png"
+            alt="Viva Decor Logo"
+            class="h-10 w-auto mr-2"
+          />
+        </div>
 
-          <!-- Navigation Links -->
-          <nav>
-              <ul class="hidden md:flex space-x-8 items-center">
-                  <li><a href="#" class="hover:text-blue-500">Home</a></li>
-                  <li><a href="#" class="hover:text-blue-500">Services</a></li>
-                  <li><a href="#" class="hover:text-blue-500">Contact</a></li>
-                  <li><a href="#" class="hover:text-blue-500">Support</a></li>
-              </ul>
-          </nav>
+        <!-- Navigation Links -->
+        <nav>
+          <ul class="hidden md:flex space-x-8 items-center">
+            <li><a href="#" class="hover:text-blue-500">Home</a></li>
+            <li><a href="#" class="hover:text-blue-500">Services</a></li>
+            <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+            <li><a href="#" class="hover:text-blue-500">Support</a></li>
+          </ul>
+        </nav>
 
-          <!-- Sign-up Button -->
-          <div class="hidden md:block">
-              <a href="#" class="bg-black text-white py-2 px-6 rounded-lg">Sign Up</a>
-          </div>
+        <!-- Sign-up Button -->
+        <div class="hidden md:block">
+          <a href="#" class="bg-black text-white py-2 px-6 rounded-lg"
+            >Sign Up</a
+          >
+        </div>
 
-          <!-- Mobile Menu Button -->
-          <div class="md:hidden">
-              <button id="menu-button" class="text-gray-500 focus:outline-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                  </svg>
-              </button>
-          </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="menu-button" class="text-gray-500 focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="md:hidden hidden z-20">
-          <ul class="flex flex-col space-y-4 p-6">
-              <li><a href="#" class="hover:text-blue-500">Home</a></li>
-              <li><a href="#" class="hover:text-blue-500">Services</a></li>
-              <li><a href="#" class="hover:text-blue-500">Contact</a></li>
-              <li><a href="#" class="hover:text-blue-500">Support</a></li>
-              <li><a href="#" class="bg-black text-white py-2 px-3 rounded-lg">Sign Up</a></li>
-          </ul>
+        <ul class="flex flex-col space-y-4 p-6">
+          <li><a href="#" class="hover:text-blue-500">Home</a></li>
+          <li><a href="#" class="hover:text-blue-500">Services</a></li>
+          <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+          <li><a href="#" class="hover:text-blue-500">Support</a></li>
+          <li>
+            <a href="#" class="bg-black text-white py-2 px-3 rounded-lg"
+              >Sign Up</a
+            >
+          </li>
+        </ul>
       </div>
-  </header>
+    </header>
 
-  <!-- Home Section -->
-  <section class="bg-white py-8">
-    <div class="container mx-auto px-4">
+    <!-- Home Section -->
+    <section class="bg-white py-8">
+      <div class="container mx-auto px-4">
         <!-- First Section: Interior Design -->
-        <div class="flex flex-col gap-5 md:flex-row justify-between  mb-4">
-            <div class=" flex flex-col md:gap-16">
-                <h2 class="text-4xl md:text-[90px] font-bold text-gray-800 mb-4">Interior Design</h2>
-                <p class="text-lg text-gray-600 w-[70%] ">
-                  Step into a world where the art of Interior Design is meticulously crafted to bring together timeless elegance and cutting-edge 
-                  modern Innovation, Allowing you to transform your living spaces into the epitome of luxury and sophistication
-                </p>
-            </div>
-            <div class=" mt-8 w-[610px] md:mt-0">
-                <img src="./img/Image 1.png" alt="Interior Design Image" class="w-full h-auto rounded-lg shadow-lg">
-            </div>
+        <div class="flex flex-col gap-5 md:flex-row justify-between mb-4">
+          <div class="flex flex-col md:gap-16">
+            <h2 class="text-4xl md:text-[90px] font-bold text-gray-800 mb-4">
+              Interior Design
+            </h2>
+            <p class="text-lg text-gray-600 w-[70%]">
+              Step into a world where the art of Interior Design is meticulously
+              crafted to bring together timeless elegance and cutting-edge
+              modern Innovation, Allowing you to transform your living spaces
+              into the epitome of luxury and sophistication
+            </p>
+          </div>
+          <div class="mt-8 w-[610px] md:mt-0">
+            <img
+              src="./img/Image 1.png"
+              alt="Interior Design Image"
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
         </div>
 
         <!-- Second Section: Projects, Clients, Styles -->
-        <div class="flex flex-col md:flex-row  justify-between">
-            <div class="flex flex-col justify-around items-center md:items-start gap-8">
-              <button class=" bg-black text-white py-2 px-3 w-[200px] " > Start Project </button>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-8">
-                    <!-- Project Completed -->
-                    <div class="p-4">
-                        <h3 class="text-3xl md:text-[70px] font-thin text-black mb-4">400+</h3>
-                        <p class="text-gray-600">Projects Completed</p>
-                    </div>
-                    <!-- Satisfied Clients -->
-                    <div class="p-4">
-                        <h3 class="text-3xl md:text-[70px] font-thin text-black mb-4">600+</h3>
-                        <p class="text-gray-600">Satisfied Clients</p>
-                    </div>
-                    <!-- Unique Styles -->
-                    <div class="p-4">
-                        <h3 class="text-3xl md:text-[70px] font-thin text-black mb-4">100+</h3>
-                        <p class="text-gray-600">Unique Styles</p>
-                    </div>
-                </div>
+        <div class="flex flex-col md:flex-row justify-between">
+          <div
+            class="flex flex-col justify-around items-center md:items-start gap-8"
+          >
+            <button class="bg-black text-white py-2 px-3 w-[200px]">
+              Start Project
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-8">
+              <!-- Project Completed -->
+              <div class="p-4">
+                <h3 class="text-3xl md:text-[70px] font-thin text-black mb-4">
+                  400+
+                </h3>
+                <p class="text-gray-600">Projects Completed</p>
+              </div>
+              <!-- Satisfied Clients -->
+              <div class="p-4">
+                <h3 class="text-3xl md:text-[70px] font-thin text-black mb-4">
+                  600+
+                </h3>
+                <p class="text-gray-600">Satisfied Clients</p>
+              </div>
+              <!-- Unique Styles -->
+              <div class="p-4">
+                <h3 class="text-3xl md:text-[70px] font-thin text-black mb-4">
+                  100+
+                </h3>
+                <p class="text-gray-600">Unique Styles</p>
+              </div>
             </div>
-            <div class=" mt-8 md:mt-0">
-                <img src="./img/Image 2.png" alt="Statistics Image" class="w-full h-auto rounded-lg shadow-lg">
-            </div>
+          </div>
+          <div class="mt-8 md:mt-0">
+            <img
+              src="./img/Image 2.png"
+              alt="Statistics Image"
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="bg-white py-16">
-  <div class="container mx-auto px-4">
-
-      <!-- Section Title -->
-      <div class="mb-12 ml-14">
-          <h2 class=" relative text-4xl font-semibold flex items-start title-with-dash">
+    <section class="bg-white py-16">
+      <div class="container mx-auto px-4">
+        <!-- Section Title -->
+        <div class="mb-12 ml-14">
+          <h2
+            class="relative text-4xl font-semibold flex items-start title-with-dash"
+          >
             Our Services
           </h2>
-      </div>
+        </div>
 
-      <!-- Services Boxes -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Services Boxes -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Service Box 1 -->
-          <div class="flex items-start p-6 ">
-              <img src="./img/Interior design icon.svg" alt="Service 1" class="h-16 w-16 mr-4 rounded-md">
-              <div>
-                  <h3 class="text-xl font-bold text-gray-800">Lighting Design</h3>
-                  <p class="text-gray-600">
-                    Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere                  </p>
-              </div>
+          <div class="flex items-start p-6">
+            <img
+              src="./img/Interior design icon.svg"
+              alt="Service 1"
+              class="h-16 w-16 mr-4 rounded-md"
+            />
+            <div>
+              <h3 class="text-xl font-bold text-gray-800">Lighting Design</h3>
+              <p class="text-gray-600">
+                Achieve the perfect balance of ambient, task, and accent
+                lighting for a functional atmosphere
+              </p>
+            </div>
           </div>
 
           <!-- Service Box 2 -->
-          <div class="flex items-start p-6 ">
-              <img src="./img/Interior design icon.svg" alt="Service 2" class="h-16 w-16 mr-4 rounded-md">
-              <div>
-                  <h3 class="text-xl font-bold text-gray-800">Interior Design</h3>
-                  <p class="text-gray-600">
-                    From concept to completion, we oversee every detail to bring your vision to life efficiently                  </p>
-              </div>
+          <div class="flex items-start p-6">
+            <img
+              src="./img/Interior design icon.svg"
+              alt="Service 2"
+              class="h-16 w-16 mr-4 rounded-md"
+            />
+            <div>
+              <h3 class="text-xl font-bold text-gray-800">Interior Design</h3>
+              <p class="text-gray-600">
+                From concept to completion, we oversee every detail to bring
+                your vision to life efficiently
+              </p>
+            </div>
           </div>
 
           <!-- Service Box 3 -->
-          <div class="flex items-start p-6 ">
-              <img src="./img/Interior design icon.svg" alt="Service 3" class="h-16 w-16 mr-4 rounded-md">
-              <div>
-                  <h3 class="text-xl font-bold text-gray-800">Outdoor Design</h3>
-                  <p class="text-gray-600">
-                    Celebrate the changing seasons with our seasonal outdoor decor services                  </p>
-              </div>
+          <div class="flex items-start p-6">
+            <img
+              src="./img/Interior design icon.svg"
+              alt="Service 3"
+              class="h-16 w-16 mr-4 rounded-md"
+            />
+            <div>
+              <h3 class="text-xl font-bold text-gray-800">Outdoor Design</h3>
+              <p class="text-gray-600">
+                Celebrate the changing seasons with our seasonal outdoor decor
+                services
+              </p>
+            </div>
           </div>
+        </div>
       </div>
+    </section>
 
-  </div>
-</section>
+    <section class="bg-white py-16">
+      <div
+        class="container mx-auto flex flex-col gap-4 md:flex-row items-center px-4 h-screen"
+      >
+        <!-- Left Side: Image -->
+        <div class="w-[500px]">
+          <img
+            src="./img/Image.png"
+            alt="Decor Image"
+            class="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
 
-  <script>
-      // Toggle mobile menu visibility
-      document.getElementById('menu-button').addEventListener('click', function () {
-          const mobileMenu = document.getElementById('mobile-menu');
-          mobileMenu.classList.toggle('hidden');
-      });
-  </script>
+        <!-- Right Side: Content -->
+        <div
+          class="md:w-1/2 mt-8 md:mt-0 md:pl-8 flex flex-col justify-around h-[86svh]"
+        >
+          <!-- Title -->
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">
+            Designing Your Dream With Brilliance
+          </h2>
 
-</body>
+          <!-- Description -->
+          <p class="text-gray-600 mb-6">
+            Elevate your spaces with bespoke interior designs that reflect your
+            unique style and aspirations, crafted with precision and brilliance
+            for an unforgettable living experience
+          </p>
+
+          <!-- Question 1 -->
+          <div class="mb-4">
+            <div
+              class="flex justify-between items-center cursor-pointer"
+              onclick="toggleCollapse('answer1')"
+            >
+              <p class="text-lg text-gray-700">Living Room Interior Design</p>
+              <span class="text-xl text-black">+</span>
+            </div>
+            <div id="answer1" class="collapse-content text-gray-600 mt-2">
+              Our designs stand out because we focus on blending modern
+              aesthetics with functionality to create spaces that truly inspire.
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="mb-4">
+            <div
+              class="flex justify-between items-center cursor-pointer"
+              onclick="toggleCollapse('answer2')"
+            >
+              <p class="text-lg text-gray-700">
+                Commercial Office Room Interior Design
+              </p>
+              <span class="text-xl text-black">+</span>
+            </div>
+            <div id="answer2" class="collapse-content text-gray-600 mt-2">
+              We work closely with each client, ensuring that every aspect of
+              the project is tailored to their vision and preferences.
+            </div>
+          </div>
+
+          <!-- Button -->
+          <div class="mt-8">
+            <a href="#" class="bg-black text-white py-2 px-6 rounded-lg">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-16">
+      <div
+        class="container mx-auto flex flex-col gap-4 md:flex-row items-center px-4 h-screen"
+      >
+        <div
+          class="md:w-1/2 mt-8 md:mt-0 md:pl-8 flex flex-col justify-around h-[86svh]"
+        >
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">
+            Designing Your Dream in Three Simple Steps
+          </h2>
+
+          <div class="grid grid-cols-1 gap-2">
+            <div class="flex items-start p-6">
+              <div class="flex flex-col justify-between items-center gap-4">
+                <img
+                  src="./img/Step1.svg"
+                  alt="Service 1"
+                  class="bg-black rounded-full h-[34px] w-[34px]"
+                />
+                <span class="bg-gray-400 w-[2px] h-[74px]"></span>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-bold text-gray-800">Lighting Design</h3>
+                <p class="text-gray-600">
+                  Achieve the perfect balance of ambient, task, and accent
+                  lighting for a functional atmosphere.
+                </p>
+              </div>
+            </div>
+
+            <!-- Service Box 2 -->
+            <div class="flex items-start p-6">
+              <div class="flex flex-col justify-between items-center gap-4">
+                <img
+                  src="./img/Step1.svg"
+                  alt="Service 1"
+                  class="bg-black rounded-full h-[34px] w-[34px]"
+                />
+                <span class="bg-gray-400 w-[2px] h-[74px]"></span>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-bold text-gray-800">Interior Design</h3>
+                <p class="text-gray-600">
+                  From concept to completion, we oversee every detail to bring
+                  your vision to life efficiently.
+                </p>
+              </div>
+            </div>
+
+            <!-- Service Box 3 -->
+            <div class="flex items-start p-6">
+              <div class="flex flex-col justify-between items-center gap-4">
+                <img
+                  src="./img/Step3.svg"
+                  alt="Service 3"
+                  class="bg-black rounded-full h-[34px] w-[34px] mr-4"
+                />
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-bold text-gray-800">Outdoor Design</h3>
+                <p class="text-gray-600">
+                  Celebrate the changing seasons with our seasonal outdoor decor
+                  services.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="w-[500px]">
+          <img
+            src="./img/Image.png"
+            alt="Decor Image"
+            class="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-16">
+      <div
+        class="container mx-auto flex flex-col gap-4 md:flex-row items-center px-4 h-screen"
+      >
+        <div>
+          <!-- Left  -->
+          <div>
+            <div class="w-[500px]">
+              <img
+                src="./img/Mask group (1).png"
+                alt="Decor Image"
+                class="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+            <div class=" bg-black text-white shadow-lg rounded-lg p-6 max-w-sm mx-auto">
+              <!-- Big Title -->
+              <h2 class="text-6xl font-bold text-white mb-4 text-center">
+                "
+              </h2>
+
+              <!-- Description -->
+              <p class="text-white mb-6 text-center">
+                Working with your design team was an absolute pleasure. The
+                attention to detail and creativity exceeded my expectations.
+                Thank you for making my home beautiful!
+              </p>
+
+              <!-- Image, Title, and Position -->
+              <div class="flex items-center ">
+                <!-- Image -->
+                <img
+                  src="./img/Mask group (2).png"
+                  alt="Team Member"
+                  class="rounded-full w-14 h-14 mr-2 object-cover"
+                />
+
+                <!-- Name -->
+                <div class="flex flex-col">
+                  <h3 class="text-xl font-bold text-gray-200">John Doe</h3>
+
+                  <!-- Position -->
+                  <p class="text-gray-500">Lead Interior Designer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+
+      function toggleCollapse(id) {
+        const content = document.getElementById(id);
+        content.classList.toggle("active");
+      }
+    </script>
+  </body>
 </html>
